@@ -1,0 +1,17 @@
+#!/usr/bin/env ansible-playbook
+#---
+- name: playbook 
+  hosts: localhost 
+
+  roles:
+    - role: distrobuilder 
+      packages:
+      - curl
+      - vim-tiny
+      actions:
+      - | 
+        #!/bin/sh
+        # Install docker engine
+        set -eux
+        curl -fsSL https://get.docker.com | sh
+...

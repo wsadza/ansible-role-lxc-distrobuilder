@@ -1,0 +1,35 @@
+name: patch
+
+on:
+  push:
+    branches:
+      - 'fix/\d+\.\d+\.x'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    
+      
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git
+          
+      - name: Bump version
+        run: |
+          GITHUB_REF=${GITHUB_REF//*\/}
+          CURRENT_VERSION="$(git ls-remote -q --tags | awk '{ print $2}'| sort -nr | sed 's/refs\/tags\///g' | grep ${GITHUB_REF//.x} | head -n1 )";
+          NEXT_VERSION=$(docker run alpine/semver semver -c -i patch ${CURRENT_VERSION});
+
+          echo "${CURRENT_VERSION}";
+          echo "${NEXT_VERSION}";
+
+          git tag ${NEXT_VERSION};
+          git push --tags;

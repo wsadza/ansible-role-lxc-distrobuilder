@@ -1,0 +1,15 @@
+#!/usr/bin/env ansible-playbook
+
+- name: Fetch Debian GPG keys 
+  command: |-
+    curl -X GET https://ftp-master.debian.org/keys/archive-key-{{ defaults.release_version }}.asc
+  register: curl_output
+
+- name: Save curl output as a variable
+  set_fact:
+    gpg_key: "{{ curl_output.stdout }}"
+
+- name: Generate a file using Jinja2 template
+  template:
+    src: templates/debian.yml.j2
+    dest: /distrobuilder/debian.yml

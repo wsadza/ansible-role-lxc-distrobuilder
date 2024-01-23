@@ -1,0 +1,49 @@
+# ./compose.yml
+
+version: "3.2"
+services:
+
+# ##################
+# COMMON 
+# ##################
+
+  common: &common
+    image: "distrobuilder" 
+    entrypoint: [ "bash", "-c" ]
+    build:
+      context: ../
+      dockerfile: './build/Dockerfile'
+    volumes:
+      - ansible:/ansible
+      - distrobuilder:/distrobuilder
+    privileged: true
+
+# ##################
+# PREPARE 
+# ##################
+
+  prepare:
+    <<: *common
+    working_dir: /ansible
+    command: 
+      - |
+        ansible-playbook            \
+          ./playbooks/playbook.yml  \
+          --inventory               \
+          ./inventory/hosts;
+
+# ##################
+# BUILD
+# ##################
+
+  build:
+    <<: *common
+    working_dir: /distrobuilder
+    command: 
+      - |
+        distrobuilder               \
+          build-lxc                 \
+          /debian.yml;
+
+volumes:
+  distrobuilder:

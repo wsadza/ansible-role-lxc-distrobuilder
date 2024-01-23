@@ -16,6 +16,8 @@ services:
     volumes:
       - ansible:/ansible
       - distrobuilder:/distrobuilder
+    env_file:
+      - "${ENV_FILE}"
     privileged: true
 
 # ##################

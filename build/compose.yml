@@ -41,8 +41,8 @@ services:
     working_dir: /distrobuilder
     command: 
       - |
-        distrobuilder               \
-          build-lxc                 \
+        distrobuilder \
+          build-lxc   \
           /debian.yml;
 
 volumes:

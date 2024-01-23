@@ -1,0 +1,32 @@
+name: ansible 
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+      
+    defaults:
+      run:
+        shell: bash
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+           
+      - name: Build 
+        run: |
+          make 
+
+      - name: Publish
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./bin/azblogfilter.darwin-amd64.tar.gz
+          asset_name: rootfs.tar.xz
+          asset_content_type: application/gzip

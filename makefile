@@ -31,8 +31,10 @@ COMPOSE_CMD := ENV_FILE=$(ENV_PATH) $(COMPOSE_EXE) -f $(COMPOSE_PATH) --env-file
 # ##################
 
 # build & run
-.PHONY: default
-default:
+prepare:
+	-@($(COMPOSE_CMD) up --no-deps --build prepare)
+
+build: prepare
 	-@($(COMPOSE_CMD) up --no-deps --build build)
 
 # docker compose - down 

@@ -46,6 +46,9 @@ services:
         distrobuilder \
           build-lxc   \
           /debian.yml;
+    depends_on:
+      - 'prepare'
+
 
 volumes:
   distrobuilder:

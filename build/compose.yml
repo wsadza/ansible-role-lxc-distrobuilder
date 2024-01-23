@@ -24,7 +24,7 @@ services:
 # PREPARE 
 # ##################
 
-  prepare:
+  build:
     <<: *common
     working_dir: /ansible
     command: 
@@ -43,6 +43,7 @@ services:
     working_dir: /distrobuilder
     command: 
       - |
+        touch debian.yml;
         distrobuilder \
           build-lxc   \
           /debian.yml;

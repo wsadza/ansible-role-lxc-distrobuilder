@@ -27,7 +27,7 @@ jobs:
         run: |
           echo "TAG=$(git ls-remote -q --tags --sort="v:refname" | tail -n1 | sed 's/.*\///; s/\^{}//')" >> $GITHUB_ENV
 
-      - name: '📦 Package linux arm'
+      - name: '📦 Release Package'
         run: |
             gh release create ${{ env.TAG }} ./ansible/rootfs.tar.xz 
         env:

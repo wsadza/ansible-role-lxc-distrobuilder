@@ -27,4 +27,4 @@ jobs:
 
   ansible:
     needs: semver
-    uses: "utilizable/${{ github.event.repository.name }}/.github/workflows/ansible.yml@develop"
+    uses: "./workflows/ansible.yml@develop"

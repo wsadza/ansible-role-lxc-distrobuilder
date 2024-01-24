@@ -27,4 +27,4 @@ jobs:
 
   ansible:
     needs: semver
-    uses: ".github/workflows/ansible.yml@develop"
+    uses: "./workflows/ansible.yml@develop"

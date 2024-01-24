@@ -19,7 +19,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-           
+
+      - name: Retrieve saved distrobuilder configuration 
+        uses: actions/download-artifact@v3
+        with:
+          name: debian.yml 
+          path: ./ansible/debian.yml
+
       - name: Prepare 
         run: |
           make execute 

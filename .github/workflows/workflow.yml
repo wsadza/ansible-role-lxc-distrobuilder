@@ -29,18 +29,18 @@ jobs:
     needs: semver
     uses: "./.github/workflows/prepare.yml"
 
-# -----------------
-# EXECUTE 
-# -----------------
-
-  execute:
-    needs: prepare 
-    uses: "./.github/workflows/execute.yml"
-
-# -----------------
-# PUBLISH 
-# -----------------
-#
-  publish:
-    needs: execute 
-    uses: "./.github/workflows/publish.yml"
+      ## -----------------
+      ## EXECUTE 
+      ## -----------------
+      #
+      #  execute:
+      #    needs: prepare 
+      #    uses: "./.github/workflows/execute.yml"
+      #
+      ## -----------------
+      ## PUBLISH 
+      ## -----------------
+      ##
+      #  publish:
+      #    needs: execute 
+      #    uses: "./.github/workflows/publish.yml"

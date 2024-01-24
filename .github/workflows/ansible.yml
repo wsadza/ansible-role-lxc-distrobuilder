@@ -1,6 +1,6 @@
 name: ansible 
 
-# Allow repository modyfication;
+  # Allow repository modyfication;
 permissions:
   contents: write
   pull-requests: write
@@ -10,62 +10,88 @@ on:
   # Allow to re-use this jobs;
   workflow_call:
 
-jobs:
-  publish:
-    runs-on: ubuntu-latest
-      
+    jobs:
+      publish:
+        runs-on: ubuntu-latest
+
     defaults:
       run:
         shell: bash
-      
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-           
-      - name: Build 
-        run: |
-          make 
 
       - name: Get latest tag
         id: get_tag
         run: |
           echo "TAG=$(git ls-remote -q --tags --sort="v:refname" | tail -n1 | sed 's/.*\///; s/\^{}//')" >> $GITHUB_ENV
 
-      - name: Create Release
-        id: create_release
+      - name: release
         uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        id: create_release
         with:
-          tag_name: "${{ env.TAG }}"
-          release_name: "Release ${{ env.TAG }}"
           draft: false
           prerelease: false
-
-      - name: '📦 Package publish'
-        run : |
-          gh release upload ${{ env.TAG }} ansible/rootfs.tar.xz
+          release_name: ${{ env.TAG }}
+          tag_name: ${{ env.TAG }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
 
-#      - name: Publish
-#        uses: actions/upload-release-asset@v1
-#        env:
-#          GITHUB_TOKEN: ${{ github.token }}
-#        with:
-#          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-#          asset_path: ./ansible/rootfs.tar.xz
-#          asset_name: rootfs.tar.xz
-#          asset_content_type: application/x-xz
+      - name: upload linux artifact
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./ansible/rootfs.tar.xz
+          asset_name: rootfs.tar.xz 
+          asset_content_type: application/x-xz
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+        #      - name: Build 
+        #        run: |
+        #          make 
+        #
+        #      - name: Get latest tag
+        #        id: get_tag
+        #        run: |
+        #          echo "TAG=$(git ls-remote -q --tags --sort="v:refname" | tail -n1 | sed 's/.*\///; s/\^{}//')" >> $GITHUB_ENV
+        #
+        #      - name: Create Release
+        #        id: create_release
+        #        uses: actions/create-release@v1
+        #        env:
+        #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #        with:
+        #          tag_name: "${{ env.TAG }}"
+        #          release_name: "Release ${{ env.TAG }}"
+        #          draft: false
+        #          prerelease: false
+        #
+        #      - name: '📦 Package publish'
+        #        run : |
+        #          gh release upload ${{ env.TAG }} ansible/rootfs.tar.xz
+        #        env:
+        #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #
+        #      - name: Publish
+        #        uses: actions/upload-release-asset@v1
+        #        env:
+        #          GITHUB_TOKEN: ${{ github.token }}
+        #        with:
+        #          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+        #          asset_path: ./ansible/rootfs.tar.xz
+        #          asset_name: rootfs.tar.xz
+        #          asset_content_type: application/x-xz
 
 
-#      - name: Publish
-#        uses: actions/upload-release-asset@v1
-#        env:
-#          GITHUB_TOKEN: ${{ github.token }}
-#        with:
-#          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-#          asset_path: ./ansible/rootfs.tar.xz
-#          asset_name: ${{ github.event.repository.name }}-${{ env.TAG }}.tar.xz
-#          asset_content_type: application/x-xz
+        #      - name: Publish
+        #        uses: actions/upload-release-asset@v1
+        #        env:
+        #          GITHUB_TOKEN: ${{ github.token }}
+        #        with:
+        #          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+        #          asset_path: ./ansible/rootfs.tar.xz
+        #          asset_name: ${{ github.event.repository.name }}-${{ env.TAG }}.tar.xz
+        #          asset_content_type: application/x-xz
 

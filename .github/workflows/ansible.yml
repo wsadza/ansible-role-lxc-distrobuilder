@@ -27,7 +27,7 @@ jobs:
         run: |
           echo "TAG=$(git ls-remote -q --tags --sort="v:refname" | tail -n1 | sed 's/.*\///; s/\^{}//')" >> $GITHUB_ENV
 
-      - name: release
+      - name: 'Release - Create'
         uses: actions/create-release@v1
         id: create_release
         with:
@@ -38,13 +38,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
-      - name: upload linux artifact
+      - name: 'Release - Publish'
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./ansible/rootfs.tar.xz
           asset_name: rootfs.tar.xz 
-          asset_content_type: application/x-xz
+          asset_content_type: application/tar
         env:
           GITHUB_TOKEN: ${{ github.token }}
 

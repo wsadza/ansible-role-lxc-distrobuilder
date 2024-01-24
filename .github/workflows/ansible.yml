@@ -49,6 +49,6 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} 
           asset_path: ./ansible/rootfs.tar.xz
-          asset_name: ${{ github.event.repository.name }}-${{ env.TAG }}.tar.xz
+          asset_name: rootfs.tar.xz
           asset_content_type: application/x-xz
 

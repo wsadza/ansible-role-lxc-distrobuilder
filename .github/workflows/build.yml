@@ -27,11 +27,12 @@ jobs:
       - name: 'Execute'
         run: |
           #make execute 
-          dd if=/dev/zero of=rootfs.tar.xz  bs=1024  count=10240
+          dd if=/dev/zero of=./asnbile/rootfs.tar.xz  bs=1024  count=10240
 
       - name: 'Release'
         run: |
-
+            
+            cd ./ansible;
             TAG="$(git ls-remote -q --tags --sort="v:refname" | tail -n1 | sed 's/.*\///; s/\^{}//')"
 
             NEW_NAME="${{ github.event.repository.name }}-${TAG}";

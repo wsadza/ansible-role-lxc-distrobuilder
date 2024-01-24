@@ -22,25 +22,10 @@ jobs:
     uses: utilizable/github-actions-semver-tagging/.github/workflows/tagging.yml@feat/output
 
 # -----------------
-# PREPARE 
+# BUILD 
 # -----------------
 
   prepare:
     needs: semver
-    uses: "./.github/workflows/prepare.yml"
+    uses: "./.github/workflows/build.yml"
 
-      ## -----------------
-      ## EXECUTE 
-      ## -----------------
-      #
-      #  execute:
-      #    needs: prepare 
-      #    uses: "./.github/workflows/execute.yml"
-      #
-      ## -----------------
-      ## PUBLISH 
-      ## -----------------
-      ##
-      #  publish:
-      #    needs: execute 
-      #    uses: "./.github/workflows/publish.yml"

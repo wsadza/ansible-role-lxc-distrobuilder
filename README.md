@@ -5,7 +5,7 @@ I've always wished for something like a Dockerfile, but for LXC containers. Rece
 ## 🔨 TODO
 
 - [x] Packages
-- [x] Scripts
+- [x] Actions (Scripts)
 - [ ] Files
 - [ ] Actions - Package
 - [ ] Actions - File

@@ -78,7 +78,7 @@ Stages definied in makefile.
 
 - `./ansible` ansible related resources, workdir for compose-containers,
 - `./build` each step contains its own docker container,
-- `./Makefile` entrypoint,
+- `./Makefile` entrypoint.
 
 ## 🔖 Versioning model
 <sup>[(Back to top)](#table-of-contents)</sup>

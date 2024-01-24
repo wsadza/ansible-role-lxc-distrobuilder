@@ -18,8 +18,8 @@ jobs:
 # SEMVER 
 # -----------------
 
-#  semver:
-#    uses: utilizable/github-actions-semver-tagging/.github/workflows/tagging.yml@feat/output
+  semver:
+    uses: utilizable/github-actions-semver-tagging/.github/workflows/tagging.yml@feat/output
 
 # -----------------
 # ANSIBLE 

@@ -8,6 +8,7 @@ services:
 # ##################
 
   common: &common
+    image: "distrobuilder" 
     entrypoint: [ "bash", "-c" ]
     volumes:
       - ../ansible:/ansible

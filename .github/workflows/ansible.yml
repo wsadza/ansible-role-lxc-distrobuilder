@@ -29,8 +29,7 @@ jobs:
 
       - name: '📦 Package linux arm'
         run: |
-            echo ${{github.event.release.tag_name}};
-            gh release upload ${{github.event.release.tag_name}} ./ansible/rootfs.tar.xz 
+            gh release upload ${{ env.TAG }} ./ansible/rootfs.tar.xz 
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         shell: bash

@@ -49,6 +49,3 @@ services:
         distrobuilder               \
           build-lxc                 \
           /ansible/debian.yml;
-
-        ls;
-        find ./ -name "rootfs*";

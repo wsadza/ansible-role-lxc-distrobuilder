@@ -20,6 +20,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Retrieve saved LXC image
+        uses: actions/download-artifact@v3
+        with:
+          name: rootfs.tar.xz 
+          path: ./ansible/rootfs.tar.xz
+
       - name: 'Release Tag'
         run: |
           echo "TAG=$(git ls-remote -q --tags --sort="v:refname" | tail -n1 | sed 's/.*\///; s/\^{}//')" >> $GITHUB_ENV

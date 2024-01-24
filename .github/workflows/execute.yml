@@ -23,3 +23,9 @@ jobs:
       - name: Prepare 
         run: |
           make execute 
+
+      - name: Temporarily save LXC image
+        uses: actions/upload-artifact@v3
+        with:
+          name: rootfs.tar.xz 
+          path: ./ansible/rootfs.tar.xz

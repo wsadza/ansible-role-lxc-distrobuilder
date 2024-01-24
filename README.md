@@ -4,7 +4,6 @@ I've always wished for something like a Dockerfile, but for LXC containers. Rece
 
 ## 🔨 TODO
 
-- [x] Core
 - [x] Packages
 - [x] Scripts
 - [ ] Files

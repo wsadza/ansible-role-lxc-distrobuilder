@@ -16,7 +16,7 @@ I've always wished for something like a Dockerfile, but for LXC containers. Rece
 - [Refs](#-refs)
 - [Requirements](#-requirements)
 - [Quick start](#%EF%B8%8F-quick-start)
-- [Playbook Options](#-playbook-options)
+- [Playbook](#-playbook)
 - [Makefile stages](#-make-stages)
 - [Repository structure](#-repository-structure)
 - [Versioning model](#-versioning-model)
@@ -43,10 +43,9 @@ Make sure you have installed both - latest docker and gnu make!
   1. Clone repository
   2. execute `make prepare`
 
-## 📔 Playbook Options
+## 📔 Playbook
 <sup>[(Back to top)](#table-of-contents)</sup>
 
-#### playbook
 ```yml
 #!/usr/bin/env ansible-playbook
 #---

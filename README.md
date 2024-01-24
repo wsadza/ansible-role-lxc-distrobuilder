@@ -79,6 +79,7 @@ defaults:
   distribution:     "debian"
   release_name:     "bookworm"
   # used during generation of archive-key
+  # https://ftp-master.debian.org/keys.html
   release_version:  "12"
   architecture:     "amd64"
   variant:          "minbase"

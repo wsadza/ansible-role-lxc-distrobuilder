@@ -6,7 +6,7 @@ on:
       - develop
 
 jobs:
-  report:
+  publish:
     runs-on: ubuntu-latest
       
     defaults:
@@ -21,11 +21,17 @@ jobs:
         run: |
           make 
 
+      - name: Get latest tag
+        id: get_tag
+        run: echo ::set-output name=TAG::$(git describe --tags --abbrev=0)
+    
       - name: Publish
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
+          upload_url: ${{ github.event.release.upload_url }}
           asset_path: ./ansible/rootfs.tar.xz
-          asset_name: rootfs.tar.xz
-          asset_content_type: application/gzip
+          asset_name: ${{ github.event.repository.name }}-${{ steps.get_tag.outputs.TAG }}.tar.xz
+          asset_content_type: application/x-xz
+

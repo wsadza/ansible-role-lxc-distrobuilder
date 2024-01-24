@@ -34,9 +34,9 @@ services:
           --inventory               \
           ./inventory/hosts;
 
-        distrobuilder               \
-          build-lxc                 \
-          /distrobuilder/debian.yml;
-
-volumes:
-  distrobuilder:
+#        distrobuilder               \
+#          build-lxc                 \
+#          /distrobuilder/debian.yml;
+#
+#volumes:
+#  distrobuilder:

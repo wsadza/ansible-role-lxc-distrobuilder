@@ -78,6 +78,7 @@ After successfully running the exec stage, your LXC package will appear in the /
 defaults:
   distribution:     "debian"
   release_name:     "bookworm"
+  # used during generation of archive-key
   release_version:  "12"
   architecture:     "amd64"
   variant:          "minbase"

@@ -20,6 +20,7 @@ I've always wished for something like a Dockerfile, but for LXC containers. Rece
 - [Makefile stages](#-make-stages)
 - [Repository structure](#-repository-structure)
 - [Versioning model](#-versioning-model)
+- [Proxmox](#-proxmox)
 
 ## 📌 Refs
 <sup>[(Back to top)](#table-of-contents)</sup>
@@ -98,3 +99,18 @@ Versions have the format `<MAJOR>.<MINOR>(.<PATCH>)?` where:
 - `<MAJOR>` Triggered manualy from default branch,
 - `<MINOR>` Triggered automaticly after each push from default branch,
 - `<PATCH>` Triggered automaticly after each push from fix/[0-9].[0-9].x branch.
+
+## Proxmox
+<sup>[(Back to top)](#table-of-contents)</sup>
+
+Small showcase how we can use populate our builded artifact into proxmox pve!
+
+<p align="center">
+<img src=".doc/image-c.png" alt="image" width="800" height="auto">
+</p>
+<p align="center">
+<img src=".doc/image-b.png" alt="image" width="800" height="auto">
+</p>
+<p align="center">
+<img src=".doc/image-a.png" alt="image" width="800" height="auto">
+</p>

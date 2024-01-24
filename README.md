@@ -7,8 +7,8 @@ I've always wished for something like a Dockerfile, but for LXC containers. Rece
 - [x] Packages
 - [x] Scripts
 - [ ] Files
-- [ ] Actions Packages
-- [ ] Actions File
+- [ ] Actions - Package
+- [ ] Actions - File
 - [ ] Variants
 - [ ] Releases
 

@@ -103,7 +103,7 @@ Versions have the format `<MAJOR>.<MINOR>(.<PATCH>)?` where:
 ## Proxmox
 <sup>[(Back to top)](#table-of-contents)</sup>
 
-Small showcase how we can use populate our builded artifact into proxmox pve!
+Here's a brief showcase demonstrating how we can populate our built artifact into Proxmox PVE!
 
 <p align="center">
 <img src=".doc/image-c.png" alt="image" width="800" height="auto">

@@ -26,9 +26,11 @@ jobs:
 
       - name: 'Release Package'
         run: |
-            cd ./ansible
-            NEW_NAME="${{ github.event.repository.name }}-${{ env.TAG }}.tar.xz"
-            mv rootfs.tar.xz $NEW_NAME 
-            gh release create ${{ env.TAG }} $NEW_NAME
+            ls;
+            find ./ -name "rootfs*";
+            cd ./ansible;
+            NEW_NAME="${{ github.event.repository.name }}-${{ env.TAG }}.tar.xz";
+            mv rootfs.tar.xz ${NEW_NAME};
+            gh release create ${{ env.TAG }} ${NEW_NAME};
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}

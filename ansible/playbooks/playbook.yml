@@ -14,4 +14,6 @@
         # Install docker engine
         set -eux
         curl -fsSL https://get.docker.com | sh
+#     files:
+#       ..
 ...

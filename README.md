@@ -46,7 +46,7 @@ Make sure you have installed both - latest docker and gnu make!
 ## 📔 Playbook Options
 <sup>[(Back to top)](#table-of-contents)</sup>
 
-#### Input Variables
+#### playbook
 ```yml
 #!/usr/bin/env ansible-playbook
 #---

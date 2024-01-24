@@ -22,13 +22,11 @@ jobs:
            
       - name: 'Prepare'
         run: |
-          #make prepare 
+          make prepare 
 
       - name: 'Execute'
         run: |
-          #make execute 
-          cd ansible;
-          dd if=/dev/zero of=rootfs.tar.xz  bs=1024  count=10240
+          make execute 
 
       - name: 'Release'
         run: |

@@ -33,7 +33,7 @@ jobs:
 
       - name: '📦 Package publish'
         run : |
-          gh release upload ${{ env.TAG }} ./ansible/rootfs.tar.xz 
+          gh release upload ${{ env.TAG }} ansible/rootfs.tar.xz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

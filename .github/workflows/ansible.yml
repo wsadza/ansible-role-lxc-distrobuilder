@@ -10,9 +10,9 @@ on:
   # Allow to re-use this jobs;
   workflow_call:
 
-    jobs:
-      publish:
-        runs-on: ubuntu-latest
+jobs:
+  publish:
+    runs-on: ubuntu-latest
 
     defaults:
       run:

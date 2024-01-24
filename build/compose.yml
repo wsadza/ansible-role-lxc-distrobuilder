@@ -9,6 +9,9 @@ services:
 
   common: &common
     image: "distrobuilder" 
+    build:
+      context: ../
+      dockerfile: './build/Dockerfile'
     entrypoint: [ "bash", "-c" ]
     volumes:
       - ../ansible:/ansible
@@ -23,9 +26,6 @@ services:
   prepare:
     <<: *common
     image: "distrobuilder-prepare" 
-    build:
-      context: ../
-      dockerfile: './build/Ansible'
     command: 
       - |
         ansible-playbook            \
@@ -39,10 +39,6 @@ services:
 
   execute:
     <<: *common
-    image: "distrobuilder-execute" 
-    build:
-      context: ../
-      dockerfile: './build/Distrobuilder'
     privileged: true
     command: 
       - |

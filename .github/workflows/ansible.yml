@@ -30,18 +30,14 @@ jobs:
         id: get_tag
         run: |
           echo "TAG=$(git ls-remote -q --tags --sort="v:refname" | tail -n1 | sed 's/.*\///; s/\^{}//')" >> $GITHUB_ENV
-  
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
+
+      - name: '📦 Package publish'
+        run : |
+          gh release upload ${{ github.event.release.tag_name }} ./ansible/rootfs.tar.xz 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: "${{ env.TAG }}"
-          release_name: "Release ${{ env.TAG }}"
-          draft: false
-          prerelease: false
 
+<<<<<<< HEAD
       - name: Publish
         uses: actions/upload-release-asset@v1
         env:
@@ -51,4 +47,27 @@ jobs:
           asset_path: ./ansible/rootfs.tar.xz
           asset_name: rootfs.tar.xz
           asset_content_type: application/x-xz
+=======
+
+#      - name: Create Release
+#        id: create_release
+#        uses: actions/create-release@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          tag_name: "${{ env.TAG }}"
+#          release_name: "Release ${{ env.TAG }}"
+#          draft: false
+#          prerelease: false
+
+#      - name: Publish
+#        uses: actions/upload-release-asset@v1
+#        env:
+#          GITHUB_TOKEN: ${{ github.token }}
+#        with:
+#          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+#          asset_path: ./ansible/rootfs.tar.xz
+#          asset_name: ${{ github.event.repository.name }}-${{ env.TAG }}.tar.xz
+#          asset_content_type: application/x-xz
+>>>>>>> 8f97933 (cicd: tests)
 

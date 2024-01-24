@@ -37,7 +37,7 @@ Make sure you have installed both - latest docker and gnu make!
   2. execute `make prepare`
   3. execute `make exec`
 
-After successfully running the exec stage, your LXC package will appear in the /ansible directory.
+After successfully running the exec stage, your LXC package will appear in the /ansible directory - `rootfs.tar.xz`.
 
 ## 📔 Playbook
 <sup>[(Back to top)](#table-of-contents)</sup>

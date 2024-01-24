@@ -37,17 +37,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-<<<<<<< HEAD
-      - name: Publish
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./ansible/rootfs.tar.xz
-          asset_name: rootfs.tar.xz
-          asset_content_type: application/x-xz
-=======
+#      - name: Publish
+#        uses: actions/upload-release-asset@v1
+#        env:
+#          GITHUB_TOKEN: ${{ github.token }}
+#        with:
+#          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+#          asset_path: ./ansible/rootfs.tar.xz
+#          asset_name: rootfs.tar.xz
+#          asset_content_type: application/x-xz
 
 #      - name: Create Release
 #        id: create_release
@@ -69,5 +67,4 @@ jobs:
 #          asset_path: ./ansible/rootfs.tar.xz
 #          asset_name: ${{ github.event.repository.name }}-${{ env.TAG }}.tar.xz
 #          asset_content_type: application/x-xz
->>>>>>> 8f97933 (cicd: tests)
 

@@ -17,26 +17,19 @@ RUN apt-get         \
 # DISTROBUILDER
 # -------------------
 
-## install required packages and tools
-#RUN apt-get         \
-#  install -y        \
-#  golang-go         \
-#  debootstrap       \
-#  rsync             \
-#  gpg               \
-#  squashfs-tools    \
-#  git               \
-#  make              \
-#  xz-utils
-#
-## build and install - distrobuilder
-#RUN git clone https://github.com/lxc/distrobuilder 
-#RUN make -C ./distrobuilder
-#RUN ln -s /go/bin/distrobuilder /usr/bin/distrobuilder
+# install required packages and tools
+RUN apt-get         \
+  install -y        \
+  golang-go         \
+  debootstrap       \
+  rsync             \
+  gpg               \
+  squashfs-tools    \
+  git               \
+  make              \
+  xz-utils
 
-# -------------------
-# copy 
-# -------------------
-
-#COPY ./ansible /ansible
-#COPY ./distrobuilder /distrobuilder
+# build and install - distrobuilder
+RUN git clone https://github.com/lxc/distrobuilder 
+RUN make -C ./distrobuilder
+RUN ln -s /go/bin/distrobuilder /usr/bin/distrobuilder

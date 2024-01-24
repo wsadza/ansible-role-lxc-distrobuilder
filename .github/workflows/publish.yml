@@ -1,0 +1,34 @@
+name: ansible 
+
+# Allow repository modyfication;
+permissions:
+  packages: write
+
+on:
+  # Allow to re-use this jobs;
+  workflow_call:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+      
+    defaults:
+      run:
+        shell: bash
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 'Release Tag'
+        run: |
+          echo "TAG=$(git ls-remote -q --tags --sort="v:refname" | tail -n1 | sed 's/.*\///; s/\^{}//')" >> $GITHUB_ENV
+
+      - name: 'Release Package'
+        run: |
+            cd ./ansible
+            NEW_NAME="${{ github.event.repository.name }}-${{ env.TAG }}.tar.xz"
+            mv rootfs.tar.xz $NEW_NAME 
+            gh release create ${{ env.TAG }} $NEW_NAME
+        env:
+          GITHUB_TOKEN: ${{ github.TOKEN }}

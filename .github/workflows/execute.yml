@@ -1,17 +1,15 @@
-name: ansible 
+name: execute 
 
 # Allow repository modyfication;
 permissions:
   contents: write
-  pull-requests: write
-  packages: write
 
 on:
   # Allow to re-use this jobs;
   workflow_call:
 
 jobs:
-  publish:
+  execute:
     runs-on: ubuntu-latest
       
     defaults:
@@ -22,6 +20,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
            
-      - name: Build 
+      - name: Prepare 
         run: |
-          make build
+          make execute 

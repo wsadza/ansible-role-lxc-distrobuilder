@@ -1,0 +1,25 @@
+name: prepare 
+
+# Allow repository modyfication;
+permissions:
+  contents: write
+
+on:
+  # Allow to re-use this jobs;
+  workflow_call:
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+      
+    defaults:
+      run:
+        shell: bash
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+           
+      - name: Prepare 
+        run: |
+          make prepare 

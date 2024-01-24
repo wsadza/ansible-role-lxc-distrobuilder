@@ -22,25 +22,25 @@ jobs:
     uses: utilizable/github-actions-semver-tagging/.github/workflows/tagging.yml@feat/output
 
 # -----------------
-# ANSIBLE 
+# PREPARE 
 # -----------------
 
-  ansible:
+  prepare:
     needs: semver
-    uses: "./.github/workflows/ansible.yml"
+    uses: "./.github/workflows/prepare.yml"
 
-      ## -----------------
-      ## DISTROBUILDER 
-      ## -----------------
-      #
-      #  ansible:
-      #    needs: semver
-      #    uses: "./.github/workflows/ansible.yml"
-      #
-      ## -----------------
-      ## PUBLISH 
-      ## -----------------
-      #
-      #  ansible:
-      #    needs: semver
-      #    uses: "./.github/workflows/ansible.yml"
+# -----------------
+# EXECUTE 
+# -----------------
+
+  execute:
+    needs: prepare 
+    uses: "./.github/workflows/execute.yml"
+
+# -----------------
+# PUBLISH 
+# -----------------
+#
+  publish:
+    needs: execute 
+    uses: "./.github/workflows/publish.yml"

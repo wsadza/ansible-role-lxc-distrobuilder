@@ -21,10 +21,10 @@ services:
     privileged: true
 
 # ##################
-# PLAY 
+# PREPARE 
 # ##################
 
-  play:
+  prepare:
     <<: *common
     working_dir: /ansible
     command: 
@@ -34,9 +34,20 @@ services:
           --inventory               \
           ./inventory/hosts;
 
-#        distrobuilder               \
-#          build-lxc                 \
-#          /distrobuilder/debian.yml;
-#
-#volumes:
-#  distrobuilder:
+# ##################
+# EXECUTE 
+# ##################
+
+  execute:
+    <<: *common
+    working_dir: /distrobuilder
+    command: 
+      - |
+        distrobuilder               \
+          build-lxc                 \
+          /debian.yml;
+      - |
+        mv rootfs.tar.zx /ansible
+
+volumes:
+  distrobuilder:

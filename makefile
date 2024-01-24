@@ -31,8 +31,12 @@ COMPOSE_CMD := ENV_FILE=$(ENV_PATH) $(COMPOSE_EXE) -f $(COMPOSE_PATH) --env-file
 # ##################
 
 # build & run
-play:
-	-@($(COMPOSE_CMD) up --no-deps --build play)
+prepare:
+	-@($(COMPOSE_CMD) up --no-deps --build prepare)
+
+# build 
+execute:
+	-@($(COMPOSE_CMD) up --no-deps --build execute)
 
 # docker compose - down 
 prune:

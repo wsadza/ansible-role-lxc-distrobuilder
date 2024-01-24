@@ -5,7 +5,7 @@ Always wished for something like a Dockerfile but for LXC containers -  recently
 ## Table of Contents
 - [Requirements](#-requirements)
 - [Quick start](#%EF%B8%8F-quick-start)
-- [Configuration](#playbook-options)
+- [Playbook Options](#-playbook-options)
 - [Makefile stages](#-make-stages)
 - [Repository structure](#-repository-structure)
 - [Versioning model](#-versioning-model)

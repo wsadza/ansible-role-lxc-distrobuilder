@@ -2,6 +2,17 @@ LXC - DISTROBUILDER
 ============
 I've always wished for something like a Dockerfile, but for LXC containers. Recently, I discovered [distrobuilder](https://linuxcontainers.org/distrobuilder/docs/latest/), a tool that allows you to effortlessly create LXC containers using a YAML configuration. With this in mind, I've wrapped it into an Ansible playbook and set up GitHub Actions to provide semi-automated LXC container provisioning!
 
+## 🔨 TODO
+
+- [x] Core
+- [x] Packages
+- [x] Scripts
+- [ ] Files
+- [ ] Actions Packages
+- [ ] Actions File
+- [ ] Variants
+- [ ] Releases
+
 ## Table of Contents
 - [Refs](#-refs)
 - [Requirements](#-requirements)

@@ -28,7 +28,8 @@ jobs:
 
       - name: Get latest tag
         id: get_tag
-        run: echo "TAG=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+        run: |
+          echo "TAG=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
   
       - name: Create Release
         id: create_release
@@ -36,8 +37,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ env.TAG }}
-          release_name: Release ${{ env.TAG }}         
+          tag_name: "${{ env.TAG }}"
+          release_name: "Release ${{ env.TAG }}"
           draft: false
           prerelease: false
 

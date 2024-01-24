@@ -13,7 +13,6 @@ I've always wished for something like a Dockerfile, but for LXC containers. Rece
 - [ ] Releases
 
 ## Table of Contents
-- [Refs](#-refs)
 - [Requirements](#-requirements)
 - [Quick start](#%EF%B8%8F-quick-start)
 - [Playbook](#-playbook)
@@ -21,13 +20,7 @@ I've always wished for something like a Dockerfile, but for LXC containers. Rece
 - [Repository structure](#-repository-structure)
 - [Versioning model](#-versioning-model)
 - [Proxmox](#proxmox)
-
-## 📌 Refs
-<sup>[(Back to top)](#table-of-contents)</sup>
-
-- https://linuxcontainers.org/distrobuilder/docs/latest/reference/source/
-- https://blog.simos.info/using-distrobuilder-to-create-container-images-for-lxc-and-lxd/
-- https://github.com/lxc/lxc-ci/blob/main/images/debian.yaml
+- [Refs](#-refs)
 
 ## 🧰 Requirements
 <sup>[(Back to top)](#table-of-contents)</sup>
@@ -114,3 +107,10 @@ Here's a brief showcase demonstrating how we can populate our built artifact int
 <p align="center">
 <img src=".doc/image-a.png" alt="image" width="800" height="auto">
 </p>
+
+## 📌 Refs
+<sup>[(Back to top)](#table-of-contents)</sup>
+
+- https://linuxcontainers.org/distrobuilder/docs/latest/reference/source/
+- https://blog.simos.info/using-distrobuilder-to-create-container-images-for-lxc-and-lxd/
+- https://github.com/lxc/lxc-ci/blob/main/images/debian.yaml

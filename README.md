@@ -99,7 +99,7 @@ Versions have the format `<MAJOR>.<MINOR>(.<PATCH>)?` where:
 - `<MINOR>` Triggered automaticly after each push from default branch,
 - `<PATCH>` Triggered automaticly after each push from fix/[0-9].[0-9].x branch.
 
-## Proxmox
+## 💻 Proxmox
 <sup>[(Back to top)](#table-of-contents)</sup>
 
 Here's a brief showcase demonstrating how we can populate our built artifact into Proxmox PVE!

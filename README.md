@@ -42,6 +42,8 @@ After successfully running the exec stage, your LXC package will appear in the /
 ## 📔 Playbook
 <sup>[(Back to top)](#table-of-contents)</sup>
 
+#### Main Playbook
+
 ```yml
 #!/usr/bin/env ansible-playbook
 #---
@@ -69,6 +71,37 @@ After successfully running the exec stage, your LXC package will appear in the /
 ...
 ```
 
+#### Defaults
+
+```yaml
+---
+defaults:
+  distribution:     "debian"
+  release_name:     "bookworm"
+  release_version:  "12"
+  architecture:     "amd64"
+  variant:          "minbase"
+  downloader:       "debootstrap"
+  source_url:       "https://deb.debian.org/debian/"
+  description:      "base image"
+
+  packages:
+    - apt-utils
+    - ca-certificates
+    - dialog
+    - dnsutils
+    - ifupdown
+    - iproute2
+    - iputils-ping
+    - isc-dhcp-client
+    - locales
+    - net-tools
+    - netbase
+    - openssh-client
+    - rsync
+    - sysv-rc-conf
+    - sysvinit-core
+```
 ## 📒 Make stages
 <sup>[(Back to top)](#table-of-contents)</sup>
 

@@ -3,12 +3,20 @@ LXC - DISTROBUILDER
 Always wished for something like a Dockerfile but for LXC containers -  recently i discovered [distrobuilder](https://linuxcontainers.org/distrobuilder/docs/latest/) – it lets you whip up LXC containers effortlessly using a YAML config. I've wrapped it into Ansible playbook and GitHub Actions setup. 
 
 ## Table of Contents
+- [Refs](#-refs)
 - [Requirements](#-requirements)
 - [Quick start](#%EF%B8%8F-quick-start)
 - [Playbook Options](#-playbook-options)
 - [Makefile stages](#-make-stages)
 - [Repository structure](#-repository-structure)
 - [Versioning model](#-versioning-model)
+
+## 📌 Refs
+<sup>[(Back to top)](#table-of-contents)</sup>
+
+- https://linuxcontainers.org/distrobuilder/docs/latest/reference/source/
+- https://blog.simos.info/using-distrobuilder-to-create-container-images-for-lxc-and-lxd/
+- https://github.com/lxc/lxc-ci/blob/main/images/debian.yaml
 
 ## 🧰 Requirements
 <sup>[(Back to top)](#table-of-contents)</sup>

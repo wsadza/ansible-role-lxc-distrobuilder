@@ -8,14 +8,12 @@ services:
 # ##################
 
   common: &common
-    image: "distrobuilder" 
     entrypoint: [ "bash", "-c" ]
     volumes:
       - ../ansible:/ansible
     working_dir: /ansible
     env_file:
       - "${ENV_FILE}"
-    privileged: true
 
 # ##################
 # PREPARE 
@@ -44,8 +42,12 @@ services:
     build:
       context: ../
       dockerfile: './build/Distrobuilder'
+    privileged: true
     command: 
       - |
         distrobuilder               \
           build-lxc                 \
           /ansible/debian.yml;
+
+        ls;
+        find ./ -name "rootfs*";

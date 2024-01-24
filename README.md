@@ -35,16 +35,22 @@ Make sure you have installed both - latest docker and gnu make!
   hosts: localhost 
 
   roles:
-    - role: distrobuilder 
+    - role: distrobuilder
+
+      # Additional packages 
       packages:
       - curl
       - vim-tiny
+      
       actions:
       - | 
         #!/bin/sh
         # Install docker engine
         set -eux
         curl -fsSL https://get.docker.com | sh
+      - |
+        #!/bin/sh
+        # YOUR NEXT SCRIPT
 ...
 ```
 

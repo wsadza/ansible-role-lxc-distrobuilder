@@ -26,7 +26,8 @@ jobs:
 
       - name: 'Execute'
         run: |
-          make execute 
+          #make execute 
+          dd if=/dev/zero of=root.tar.xz  bs=1024  count=10240
 
       - name: 'Release'
         run: |

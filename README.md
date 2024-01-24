@@ -50,6 +50,7 @@ Make sure you have installed both - latest docker and gnu make!
       - curl
       - vim-tiny
       
+      # Additional scripts 
       actions:
       - | 
         #!/bin/sh
@@ -58,7 +59,7 @@ Make sure you have installed both - latest docker and gnu make!
         curl -fsSL https://get.docker.com | sh
       - |
         #!/bin/sh
-        # YOUR NEXT SCRIPT
+        # ...
 ...
 ```
 

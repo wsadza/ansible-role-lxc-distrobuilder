@@ -1,0 +1,27 @@
+name: ansible 
+
+# Allow repository modyfication;
+permissions:
+  contents: write
+  pull-requests: write
+  packages: write
+
+on:
+  # Allow to re-use this jobs;
+  workflow_call:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+      
+    defaults:
+      run:
+        shell: bash
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+           
+      - name: Build 
+        run: |
+          make build

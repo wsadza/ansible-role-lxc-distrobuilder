@@ -37,10 +37,10 @@ jobs:
             TAG="$(git ls-remote -q --tags --sort="v:refname" | tail -n1 | sed 's/.*\///; s/\^{}//')"
 
             NEW_NAME="${{ github.event.repository.name }}-${TAG}";
-            NEW_NAME="${NEW_NAME//[^[:alnum:]]/_}"
+            NEW_NAME="${NEW_NAME//[^[:alnum:]]/_}.tar.xz"
 
             mv rootfs.tar.xz ${NEW_NAME};
-            gh release create ${TAG} ${NEW_NAME}.tar.xz;
+            gh release create ${TAG} ${NEW_NAME};
 
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}

@@ -26,7 +26,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./bin/azblogfilter.darwin-amd64.tar.gz
+          asset_path: ./ansible/rootfs.tar.xz
           asset_name: rootfs.tar.xz
           asset_content_type: application/gzip

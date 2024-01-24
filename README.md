@@ -87,6 +87,7 @@ defaults:
   source_url:       "https://deb.debian.org/debian/"
   description:      "base image"
 
+  # Default packages
   packages:
     - apt-utils
     - ca-certificates

@@ -27,7 +27,7 @@ jobs:
 # BUILD 
 # -----------------
 
-  prepare:
+  build:
     needs: semver
     uses: "./.github/workflows/build.yml"
 

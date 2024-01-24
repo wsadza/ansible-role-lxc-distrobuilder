@@ -10,12 +10,9 @@ services:
   common: &common
     image: "distrobuilder" 
     entrypoint: [ "bash", "-c" ]
-    build:
-      context: ../
-      dockerfile: './build/Dockerfile'
     volumes:
       - ../ansible:/ansible
-      - distrobuilder:/distrobuilder
+    working_dir: /ansible
     env_file:
       - "${ENV_FILE}"
     privileged: true
@@ -26,7 +23,10 @@ services:
 
   prepare:
     <<: *common
-    working_dir: /ansible
+    image: "distrobuilder-prepare" 
+    build:
+      context: ../
+      dockerfile: './build/Ansible'
     command: 
       - |
         ansible-playbook            \
@@ -40,14 +40,12 @@ services:
 
   execute:
     <<: *common
-    working_dir: /distrobuilder
+    image: "distrobuilder-execute" 
+    build:
+      context: ../
+      dockerfile: './build/Distrobuilder'
     command: 
       - |
         distrobuilder               \
           build-lxc                 \
-          /debian.yml;
-      - |
-        mv rootfs.tar.zx /ansible
-
-volumes:
-  distrobuilder:
+          /ansible/debian.yml;

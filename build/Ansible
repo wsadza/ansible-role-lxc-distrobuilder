@@ -1,0 +1,13 @@
+FROM golang:1.20.13-bullseye 
+
+# -------------------
+# ANSIBLE
+# -------------------
+
+# install required packages and tools
+RUN apt-get update
+RUN apt-get         \
+  install -y        \
+  ansible           \
+  ssh               \
+  python3-jmespath 

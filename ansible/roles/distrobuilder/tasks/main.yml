@@ -12,4 +12,4 @@
 - name: Generate a file using Jinja2 template
   template:
     src: templates/debian.yml.j2
-    dest: /distrobuilder/debian.yml
+    dest: /ansible/debian.yml

@@ -42,6 +42,7 @@ Make sure you have installed both - latest docker and gnu make!
 
   1. Clone repository
   2. execute `make prepare`
+  3. execute `make exec`
 
 ## 📔 Playbook
 <sup>[(Back to top)](#table-of-contents)</sup>

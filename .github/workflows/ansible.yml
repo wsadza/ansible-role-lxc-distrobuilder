@@ -31,6 +31,17 @@ jobs:
         run: |
           echo "TAG=$(git ls-remote -q --tags --sort="v:refname" | tail -n1 | sed 's/.*\///; s/\^{}//')" >> $GITHUB_ENV
 
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: "${{ env.TAG }}"
+          release_name: "Release ${{ env.TAG }}"
+          draft: false
+          prerelease: false
+
       - name: '📦 Package publish'
         run : |
           gh release upload ${{ env.TAG }} ansible/rootfs.tar.xz
@@ -47,16 +58,6 @@ jobs:
 #          asset_name: rootfs.tar.xz
 #          asset_content_type: application/x-xz
 
-#      - name: Create Release
-#        id: create_release
-#        uses: actions/create-release@v1
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        with:
-#          tag_name: "${{ env.TAG }}"
-#          release_name: "Release ${{ env.TAG }}"
-#          draft: false
-#          prerelease: false
 
 #      - name: Publish
 #        uses: actions/upload-release-asset@v1

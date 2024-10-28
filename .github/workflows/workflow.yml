@@ -21,7 +21,7 @@ jobs:
 # -----------------
 
   semver:
-    uses: utilizable/github-actions-semver-tagging/.github/workflows/tagging.yml@feat/output
+    uses: wsadza/github-actions-semver-tagging/.github/workflows/tagging.yml@feat/output
 
 # -----------------
 # BUILD 

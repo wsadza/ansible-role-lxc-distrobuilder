@@ -1,12 +1,20 @@
-name: build 
+name: 'Building LXC' 
 
 # Allow repository modyfication;
 permissions:
   contents: write
 
 on:
-  # Allow to re-use this jobs;
-  workflow_call:
+# Trigger this workflow on each tag push
+
+  push:
+# Specify that it should only trigger when a tag is pushed.
+# The wildcard '*' means any tag name will match.
+    tags:
+      - '*'
+
+# Allow manually triggering this workflow from the Actions tab in GitHub.
+  workflow_dispatch:
 
 jobs:
   build:

@@ -1,0 +1,24 @@
+name: minor
+description: ''
+
+inputs:
+  token:
+    description: "GitHub Token used to authenticate against a repository for Git context."
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v3
+      with:
+        token: "${{ inputs.token }}"
+
+    - name: Bump version
+      shell: bash
+      run: |
+        REMOTE_VERSION=$(git ls-remote --tags --sort="v:refname" | tail -n1 | sed 's/.*\///; s/\^{}//');
+        CURRENT_VERSION="${REMOTE_VERSION:=0.0.0}"
+        NEXT_VERSION=$(docker run alpine/semver semver -c -i minor ${CURRENT_VERSION});
+
+        git tag ${NEXT_VERSION};
+        git push --tags origin;

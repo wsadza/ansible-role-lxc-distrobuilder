@@ -1,0 +1,103 @@
+# tagging.yml
+name: Tagging Semver
+
+on:
+  # Trigger minor on default ref;
+  # Trigger patch on default ref;
+  push:
+    branches:
+      - '*' 
+   
+  # Trigger major on default ref;
+  workflow_dispatch:
+
+jobs:
+
+  # -----------------
+  # Prepare: Workflow Keeper 
+  #
+  workflow_keeper:
+    name: "Workflow Keeper"
+    runs-on: ubuntu-latest
+    outputs:
+      ALLOWED_TO_RUN: ${{ steps.check_changes.outputs.ALLOWED_TO_RUN }}
+    steps:
+
+      # -----------------
+      # Prepare: Checkout 
+      #
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # -----------------
+      # Check if there are changes in the 'build/' directory
+      #
+      - name: Check for changes in the build directory
+        id: check_changes
+        run: |
+          echo "ALLOWED_TO_RUN=false" >> $GITHUB_OUTPUT
+          if git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -q '^metal/*'; then
+            echo "ALLOWED_TO_RUN=true" >> $GITHUB_OUTPUT
+          fi    
+
+  # -----------------
+  # Major X.0.0 
+  # -----------------
+  major:
+    name: "Semver: Major"
+    # Restrict to manual startup; 
+    # Restrict to default branch;
+    if: ${{ (github.event_name == 'workflow_dispatch' && github.actor) &&
+            (always() && (format('refs/heads/{0}', github.event.repository.default_branch) == github.ref)) }}
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: ./.github/actions/tagging/semver/major
+        with:
+          token: ${{ secrets.token }}
+  
+  # -----------------
+  # Minor 0.X.0 
+  # -----------------
+  minor:
+    name: "Semver: Minor"
+    # Restrict to push startup; 
+    # Restrict to default branch;
+    if: ${{ (github.event_name == 'push') &&
+            (always() && (format('refs/heads/{0}', github.event.repository.default_branch) == github.ref)) && 
+            (needs.workflow_keeper.outputs.ALLOWED_TO_RUN == 'true')
+            }}
+    needs: [ workflow_keeper ]
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - uses: ./.github/actions/tagging/semver/minor
+      with:
+        token: ${{ secrets.token }}
+      
+  # -----------------
+  # Patch 0.0.X 
+  # -----------------
+  patch:
+    name: "Semver: Patch"
+    # Restrict to the fix branch; 
+    if: ${{ startsWith(github.ref, 'refs/heads/fix/') && endsWith(github.ref, '.x') }}
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - uses: ./.github/actions/tagging/semver/patch
+      with:
+        token: ${{ secrets.token }}

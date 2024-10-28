@@ -37,7 +37,7 @@ jobs:
         id: check_changes
         run: |
           echo "ALLOWED_TO_RUN=false" >> $GITHUB_OUTPUT
-          if git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -q '^metal/*'; then
+          if git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -q '^ansible/*'; then
             echo "ALLOWED_TO_RUN=true" >> $GITHUB_OUTPUT
           fi    
 

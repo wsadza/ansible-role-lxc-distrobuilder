@@ -14,6 +14,11 @@
         # Install docker engine
         set -eux
         curl -fsSL https://get.docker.com | sh
+      - | 
+        #!/bin/sh
+        # Install docker engine
+        set -eux
+        apt-get install vim -y
 #     files:
 #       ..
 ...

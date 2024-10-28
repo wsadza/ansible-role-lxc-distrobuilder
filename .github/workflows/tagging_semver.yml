@@ -41,9 +41,8 @@ jobs:
     # Restrict to push startup; 
     # Restrict to default branch;
     if: ${{ (github.event_name == 'push') &&
-            (always() && (format('refs/heads/{0}', github.event.repository.default_branch) == github.ref)) && 
-            (needs.workflow_keeper.outputs.ALLOWED_TO_RUN == 'true')
-            }}
+            (always() && (format('refs/heads/{0}', github.event.repository.default_branch) == github.ref)) 
+         }}
     runs-on: ubuntu-latest
     steps:
 

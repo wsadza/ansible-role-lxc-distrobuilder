@@ -22,7 +22,7 @@ endif
 
 # docker compose 
 COMPOSE_EXE := docker compose
-COMPOSE_FILE := compose.yml
+COMPOSE_FILE := docker-compose.yml
 COMPOSE_PATH := $(WORK_PATH)/$(COMPOSE_FILE)
 COMPOSE_CMD := ENV_FILE=$(ENV_PATH) $(COMPOSE_EXE) -f $(COMPOSE_PATH) --env-file $(ENV_PATH)
 
